@@ -20,7 +20,8 @@ export class Overworld {
       const cameraPerson = this.map.gameObjects.hero;
       Object.values(this.map.gameObjects).forEach(object => {
         object.update({
-          arrow: this.directionInput.direction
+          arrow: this.directionInput.direction,
+          map: this.map,
         });
       }); 
 
@@ -41,6 +42,7 @@ export class Overworld {
 
   init() {
     this.map = new OverworldMap(OverworldMaps.DemoRoom);
+    this.map.mountObjects();
     this.directionInput = new DirectionInput();
     this.directionInput.init();
     this.startGameLoop();
